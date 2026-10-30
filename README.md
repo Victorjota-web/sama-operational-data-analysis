@@ -1,38 +1,48 @@
 # 📊 SAMA Operational Shift Fulfillment Analysis
 
-> ⚠️ **DISCLAIMER:** All data used in this project is **100% fictional and simulated** to protect company confidentiality. However, the methodology and business logic model real-world operational challenges faced in shift allocation and staffing for wholesale retail clients.
+![SAMA Operational Dashboard](dashboard.png)
+
+> ⚠️ **DISCLAIMER:** All data in this repository is **100% fictional and simulated** to protect company confidentiality.
 
 ---
 
-## 📌 Business Overview
-In retail staffing operations (connecting supermarket chains with freelance workers for roles such as cashiers, stock replenishment, and floor operators), maintaining a high **Shift Fulfillment Rate** is crucial to prevent client store disruptions and revenue loss.
+## 📌 Business Overview & AI Collaboration
+In retail staffing operations (connecting supermarket chains with freelance workers for roles such as cashiers, stock replenishment, and floor operators), maintaining a high **Shift Fulfillment Rate** is critical to prevent store disruptions and client revenue loss.
 
-This project analyzes operational shift requests, identifying store-level fill rates, attendance dropouts, and high-demand clients to guide recruitment priorities.
+To analyze this real-world problem safely, **I used Generative AI as a virtual assistant ("intern")** to architect a realistic SQLite relational database (`diarias_exemplo.db`). By prompting the AI with domain rules from my daily experience in HR operations at SAMA, we generated simulated shift logs, store profiles, and request records.
+
+---
+
+## 🔍 The Business Problem
+- **Unfilled Shift Requests:** Daily request fluctuations lead to dropouts and recruitment bottlenecks.
+- **Client Impact:** Low fill rates hurt wholesale retail client operations.
+- **Goal:** Diagnose fill rates, quantify dropouts per store, and prioritize recruiter sourcing.
 
 ---
 
 ## 🛠️ Methodology & Tech Stack
 
-### 1. Relational Data Extraction (SQL - SQLite)
-- Queried multi-table relational databases (`solicitacoes`, `lojas`, `redes`, `funcoes`).
-- Aggregated volume demand using `GROUP BY` and filtered high-volume accounts with `HAVING SUM(qtd_solicitada) > 30`.
-- Mapped regional demand distributions across cities.
+### 1. Relational Querying (SQL - SQLite)
+- Querying multi-table schemas (`solicitacoes`, `lojas`, `redes`, `funcoes`).
+- Performing `INNER JOIN` operations and aggregations using `GROUP BY`.
+- Filtering high-volume accounts with `HAVING SUM(qtd_solicitada) > 30`.
 
-### 2. Business KPI Dashboard (Microsoft Excel)
-- Built executive-level summaries featuring key metrics (Total Requests: 3,496 | Realized Shifts: 2,680 | Global Fill Rate: 76.6%).
-- Formatted visual bar charts to highlight store-level fulfillment bottlenecks below operational thresholds.
+### 2. Executive Dashboard (Microsoft Excel)
+- Built pivot tables and executive KPI summary cards.
+- Formatted visual bar charts to highlight low-performing store fill rates against the global average.
 
 ---
 
-## 📊 Key Findings & Strategic Recommendations
+## 📊 Key Findings & Strategic Insights
 
-- **Global Fill Rate:** Operational average stands at **76.66%**.
-- **Critical Operational Bottleneck:** **Beta Formosa** holds the lowest fulfillment rate at **54.48%**, requiring immediate recruiter intervention and talent pool expansion.
-- **Top Requesting Client:** **Gama Anápolis** leads volume with **324 requested shifts**.
+- **Global Fill Rate:** The operational average stands at **76.66%** across **3,496 requested shifts**.
+- **Critical Operational Bottleneck:** **Beta Formosa** holds the lowest fulfillment rate at **54.48%**, requiring urgent recruiter intervention.
+- **Top Demand Client:** **Gama Anápolis** leads request volume with **324 shifts**.
 
 ---
 
 ## 📁 Repository Structure
-- `queries.sql`: Complete SQL script containing operational aggregation queries.
-- `diarias_exemplo.db`: SQLite database file containing relational tables.
-- `base_para_excel.xlsx`: Workbook featuring raw data, pivot tables, and the Executive Dashboard.
+- `dashboard.png`: Executive KPI dashboard preview.
+- `queries.sql`: Complete SQL script with aggregation and join queries.
+- `diarias_exemplo.db`: SQLite database built with AI-assisted simulated data.
+- `base_para_excel.xlsx`: Complete workbook with data, pivot tables, and KPI dashboard.
